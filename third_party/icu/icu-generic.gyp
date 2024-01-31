@@ -51,6 +51,9 @@
         'msvs_settings': {
           'VCCLCompilerTool': {
             'AdditionalOptions': ['/std:c++20'],
+            # we need C7 compatible debug information if we build with ccache
+            'DebugInformationFormat': '1',
+            'MultiProcessorCompilation': 'true'
           },
         },
         'msvs_configuration_platform': 'x64',
