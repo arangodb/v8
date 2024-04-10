@@ -85,7 +85,7 @@ mi{
         EU{"Te Uniana o Ūropi"}
         EZ{"Te Rohe o Ūropi"}
         FI{"Whinirana"}
-        FK{"Motu Whākarangi (Ira Māwina)"}
+        FK{"Motu Whākarangi"}
         FO{"Motu Wharo"}
         FR{"Wīwī"}
         GA{"Kāpona"}
@@ -196,6 +196,7 @@ mi{
     Countries%variant{
         CD{"Kōngo"}
         CG{"Kōngo (Tominika)"}
+        FK{"Motu Whākarangi (Ira Māwina)"}
         SZ{"Warerangi"}
     }
 }

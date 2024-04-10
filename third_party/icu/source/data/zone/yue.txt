@@ -258,9 +258,6 @@ yue{
         "America:Chihuahua"{
             ec{"奇華華"}
         }
-        "America:Ciudad_Juarez"{
-            ec{"華雷斯城"}
-        }
         "America:Coral_Harbour"{
             ec{"阿蒂科肯"}
         }
@@ -1610,7 +1607,7 @@ yue{
             ls{"印度洋時間"}
         }
         "meta:Indochina"{
-            ls{"中南半島時間"}
+            ls{"印度支那時間"}
         }
         "meta:Indonesia_Central"{
             ls{"印尼中部時間"}

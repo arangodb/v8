@@ -68,9 +68,6 @@ struct UFormattedNumberRangeImpl;
 
 } // namespace impl
 
-
-#if 0
-
 /**
  * \cond
  * Export an explicit template instantiation. See datefmt.h
@@ -86,8 +83,6 @@ U_NAMESPACE_BEGIN
 namespace number {  // icu::number
 #endif
 /** \endcond */
-
-#endif
 
 // Other helper classes would go here, but there are none.
 
@@ -386,13 +381,6 @@ class U_I18N_API NumberRangeFormatterSettings {
     friend class UnlocalizedNumberRangeFormatter;
 };
 
-// Explicit instantiations in source/i18n/numrange_fluent.cpp.
-// (MSVC treats imports/exports of explicit instantiations differently.)
-#ifndef _MSC_VER
-extern template class NumberRangeFormatterSettings<UnlocalizedNumberRangeFormatter>;
-extern template class NumberRangeFormatterSettings<LocalizedNumberRangeFormatter>;
-#endif
-
 /**
  * A NumberRangeFormatter that does not yet have a locale. In order to format, a locale must be specified.
  *
@@ -445,7 +433,7 @@ class U_I18N_API UnlocalizedNumberRangeFormatter
      * The source UnlocalizedNumberRangeFormatter will be left in a valid but undefined state.
      * @stable ICU 63
      */
-    UnlocalizedNumberRangeFormatter(UnlocalizedNumberRangeFormatter&& src) noexcept;
+    UnlocalizedNumberRangeFormatter(UnlocalizedNumberRangeFormatter&& src) U_NOEXCEPT;
 
     /**
      * Copy assignment operator.
@@ -458,14 +446,14 @@ class U_I18N_API UnlocalizedNumberRangeFormatter
      * The source UnlocalizedNumberRangeFormatter will be left in a valid but undefined state.
      * @stable ICU 63
      */
-    UnlocalizedNumberRangeFormatter& operator=(UnlocalizedNumberRangeFormatter&& src) noexcept;
+    UnlocalizedNumberRangeFormatter& operator=(UnlocalizedNumberRangeFormatter&& src) U_NOEXCEPT;
 
   private:
     explicit UnlocalizedNumberRangeFormatter(
             const NumberRangeFormatterSettings<UnlocalizedNumberRangeFormatter>& other);
 
     explicit UnlocalizedNumberRangeFormatter(
-            NumberRangeFormatterSettings<UnlocalizedNumberRangeFormatter>&& src) noexcept;
+            NumberRangeFormatterSettings<UnlocalizedNumberRangeFormatter>&& src) U_NOEXCEPT;
 
     // To give the fluent setters access to this class's constructor:
     friend class NumberRangeFormatterSettings<UnlocalizedNumberRangeFormatter>;
@@ -519,7 +507,7 @@ class U_I18N_API LocalizedNumberRangeFormatter
      * The source LocalizedNumberRangeFormatter will be left in a valid but undefined state.
      * @stable ICU 63
      */
-    LocalizedNumberRangeFormatter(LocalizedNumberRangeFormatter&& src) noexcept;
+    LocalizedNumberRangeFormatter(LocalizedNumberRangeFormatter&& src) U_NOEXCEPT;
 
     /**
      * Copy assignment operator.
@@ -532,7 +520,7 @@ class U_I18N_API LocalizedNumberRangeFormatter
      * The source LocalizedNumberRangeFormatter will be left in a valid but undefined state.
      * @stable ICU 63
      */
-    LocalizedNumberRangeFormatter& operator=(LocalizedNumberRangeFormatter&& src) noexcept;
+    LocalizedNumberRangeFormatter& operator=(LocalizedNumberRangeFormatter&& src) U_NOEXCEPT;
 
 #ifndef U_HIDE_INTERNAL_API
 
@@ -566,7 +554,7 @@ class U_I18N_API LocalizedNumberRangeFormatter
         const NumberRangeFormatterSettings<LocalizedNumberRangeFormatter>& other);
 
     explicit LocalizedNumberRangeFormatter(
-        NumberRangeFormatterSettings<LocalizedNumberRangeFormatter>&& src) noexcept;
+        NumberRangeFormatterSettings<LocalizedNumberRangeFormatter>&& src) U_NOEXCEPT;
 
     LocalizedNumberRangeFormatter(const impl::RangeMacroProps &macros, const Locale &locale);
 
@@ -598,11 +586,11 @@ class U_I18N_API FormattedNumberRange : public UMemory, public FormattedValue {
      *
      * @stable ICU 63
      */
-    UnicodeString toString(UErrorCode& status) const override;
+    UnicodeString toString(UErrorCode& status) const U_OVERRIDE;
 
     // Copydoc: this method is new in ICU 64
     /** @copydoc FormattedValue::toTempString() */
-    UnicodeString toTempString(UErrorCode& status) const override;
+    UnicodeString toTempString(UErrorCode& status) const U_OVERRIDE;
 
     // Copybrief: this method is older than the parent method
     /**
@@ -612,11 +600,11 @@ class U_I18N_API FormattedNumberRange : public UMemory, public FormattedValue {
      *
      * @stable ICU 63
      */
-    Appendable &appendTo(Appendable &appendable, UErrorCode& status) const override;
+    Appendable &appendTo(Appendable &appendable, UErrorCode& status) const U_OVERRIDE;
 
     // Copydoc: this method is new in ICU 64
     /** @copydoc FormattedValue::nextPosition() */
-    UBool nextPosition(ConstrainedFieldPosition& cfpos, UErrorCode& status) const override;
+    UBool nextPosition(ConstrainedFieldPosition& cfpos, UErrorCode& status) const U_OVERRIDE;
 
     /**
      * Extracts the formatted range as a pair of decimal numbers. This endpoint
@@ -673,14 +661,14 @@ class U_I18N_API FormattedNumberRange : public UMemory, public FormattedValue {
      * Leaves the source FormattedNumberRange in an undefined state.
      * @stable ICU 63
      */
-    FormattedNumberRange(FormattedNumberRange&& src) noexcept;
+    FormattedNumberRange(FormattedNumberRange&& src) U_NOEXCEPT;
 
     /**
      * Move assignment:
      * Leaves the source FormattedNumberRange in an undefined state.
      * @stable ICU 63
      */
-    FormattedNumberRange& operator=(FormattedNumberRange&& src) noexcept;
+    FormattedNumberRange& operator=(FormattedNumberRange&& src) U_NOEXCEPT;
 
     /**
      * Destruct an instance of FormattedNumberRange, cleaning up any memory it might own.
