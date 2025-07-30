@@ -64,7 +64,32 @@
         'defines': [
           'DEBUG',
         ],
-      },
+        'conditions': [
+          ['OS=="win"', {
+            'msvs_settings': {
+              'VCCLCompilerTool': {
+                'Optimization': '2',
+                'InlineFunctionExpansion': '2',
+                'EnableIntrinsicFunctions': 'true',
+                'FavorSizeOrSpeed': '0',
+                'StringPooling': 'true',
+                'conditions': [
+                  ['component=="shared_library" or force_dynamic_crt==1', {
+                    'RuntimeLibrary': '3',  #/MDd
+                  }, {
+                    'RuntimeLibrary': '1',  #/MTd
+                  }],
+                ],
+              },
+              'VCLinkerTool': {
+                'LinkIncremental': '1',
+                'OptimizeReferences': '2',
+                'EnableCOMDATFolding': '2',
+              },
+            },
+          }],  # OS=="win"
+        ],  # conditions
+      }, # Debug
       'Release': {
         'conditions': [
           ['OS=="win"', {
